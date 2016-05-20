@@ -1,0 +1,21 @@
+#keyboard-anchor{
+	text-align: center;
+	margin-top: 120px;
+}
+
+.ui-send-button{
+	margin-left: 45%;
+	margin-top: 12%;
+}
+
+.ui-message-list{
+	list-style: none;
+	text-align: center;
+}
+
+#ui-message-list-item{
+	border-bottom: 1px solid gray;
+	font-size: 18px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}

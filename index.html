@@ -1,0 +1,79 @@
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+	<!-- jQuery -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+
+	<!-- Angular -->
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+	<!-- jQuery UI theme and Bootstrap ompiled and minified CSS -->
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+	<!-- jQuery UI position utility (optional, if you position the keyboard yourself) -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+	<!-- keyboard widget css & script -->
+	<link href="css/keyboard.css" rel="stylesheet">
+	<script src="js/jquery.keyboard.js"></script>
+	<script src="js/base.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/controllers.js"></script> 
+
+	<!-- css for the preview keyset extension -->
+	<link href="css/keyboard-previewkeyset.css" rel="stylesheet">
+	<link href="css/base.css" rel="stylesheet">
+
+	<!-- keyboard optional extensions - include ALL (includes mousewheel) -->
+	<script src="js/jquery.keyboard.extension-all.js"></script> 
+</head>
+
+<body>
+	<!-- Initialize the angular app -->
+	<div ng-app="ChatApp">
+		<div class="container">
+			<div class="row">
+				<h1 class="text-center">Send your messages</h1>
+				<div class='content' ng-controller="messageController"> 
+					<textarea id="keyboard" placeholder="Enter Text..." ng-model="messageItem" class="form-control input-lg" rows="5"></textarea>
+					<div id="keyboard-anchor"></div>
+					<button class="btn btn-success ui-send-button" ng-click="addMessage()">Send</button>
+
+					<div class="col-xs-12 text-center">
+						<ul class="ui-message-list">
+							<li ng-repeat="message in messages | orderBy: 'date'" id="ui-message-list-item">{{message.text}}</li>
+						</ul>
+					</div>	
+				
+
+					<script type="text/javascript">
+						$(document).ready(function() {
+							$('#keyboard').keyboard({
+								// Do not show the preview pane above keyboard
+								usePreview : false,
+								// Default behaviour is the keyboard covering the input field. Setting the position puts it somewhere else. 
+								position: {
+									of: $('#keyboard-anchor')
+								}
+							});
+
+							// Highlights keys if user types on their keyboard
+							$('#keyboard').addTyping({
+						    	// if true, typing on real keyboard will not highlight keys on the keyboard
+						    	showTyping : true,
+						    	// prevent user typing WHILE using the typing simulator `.typeIn('foobar')`
+						    	lockTypeIn : false,
+						    	// change default simulated typing delay
+						    	delay      : 250
+						    });
+						});
+					</script>
+				</div> <!-- div ng-controller -->
+			</div>	<!-- div row	 -->
+		</div> <!-- div container -->
+	</div> <!-- div ng-app  --> 
+</body>
+
+</html>
